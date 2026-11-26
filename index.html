@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quant CRT × Orderflow Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="top">
+  <h1>QUANT CRT × ORDERFLOW TERMINAL</h1>
+  <span id="bot" class="pill">…</span>
+  <span id="regime" class="pill">BTC …</span>
+  <span id="mode" class="pill"></span>
+  <div id="kpis"></div>
+  <button id="gear" class="icon" title="Settings" aria-label="Settings">⚙</button>
+</header>
+
+<main>
+  <aside id="side">
+    <div class="tabs" id="wtabs">
+      <button data-f="ALL" class="on">All</button>
+      <button data-f="WATCHING">Watching</button>
+      <button data-f="TRIGGERED">Triggered</button>
+    </div>
+    <div id="wl"></div>
+  </aside>
+
+  <section id="center">
+    <div id="chead">
+      <div id="csym">Select a pair</div>
+      <div class="seg" id="tfs">
+        <button data-tf="4h">4H</button><button data-tf="1h" class="on">1H</button>
+        <button data-tf="15m">15M</button><button data-tf="5m">5M</button>
+      </div>
+      <div class="seg" id="tgs">
+        <button data-tg="crt" class="on">Show CRT Levels</button>
+        <button data-tg="walls" class="on">Show Whale Walls &amp; Liq</button>
+        <button data-tg="zones" class="on">Show Signal Zones</button>
+      </div>
+    </div>
+    <div id="chart"></div>
+    <div id="note" hidden></div>
+    <div id="insp"></div>
+  </section>
+
+  <section id="bottom">
+    <div class="tabs" id="btabs">
+      <button data-t="active" class="on">Active Signals</button>
+      <button data-t="history">Trade History</button>
+      <button data-t="rejected">AI Rejected Log</button>
+      <button data-t="modes">Mode Analytics</button>
+    </div>
+    <div id="bbody"></div>
+  </section>
+</main>
+
+<div id="modal" hidden>
+  <form id="mform" autocomplete="off">
+    <h2>Settings</h2>
+    <label>Supabase URL<input id="f-url" placeholder="https://xxxx.supabase.co"></label>
+    <label>Supabase anon key<input id="f-key" placeholder="eyJ…"></label>
+    <label class="chk"><input type="checkbox" id="f-demo"> Mock demo mode (no Supabase needed)</label>
+    <p class="hint">Saved in this browser only (localStorage). Edit the placeholders at the top of app.js to bake them in instead.</p>
+    <div class="row"><button type="button" id="f-cancel">Cancel</button><button type="submit" class="pri">Save &amp; reload</button></div>
+  </form>
+</div>
+
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="charts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
